@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
+import {motion} from "framer-motion"
 
 const CryptoolyLogin = () => {
   const navigate = useNavigate();
@@ -18,10 +19,18 @@ const CryptoolyLogin = () => {
   return (
     <div className="w-full h-screen flex items-center justify-center">
       <div className="w-11/12 max-w-[586px] text-center">
-        <h1 className="font-medium bg-clip-text text-transparent mr-8 text-4xl font-semibold bg-gradient-to-r from-[#000000] to-[#F5FA80] mb-8">
+        <motion.h1 
+          className="font-medium bg-clip-text text-transparent mr-8 text-4xl font-semibold bg-gradient-to-r from-[#000000] to-[#F5FA80] mb-8"
+          initial={{x:100}}
+          animate={{x: [100, 0]}}
+        >
           CRYPTOOLY
-        </h1>
-        <div className="bg-[#F8F8F9] px-6 py-8 w-full rounded-md">
+        </motion.h1>
+        <motion.div 
+          className="bg-[#F8F8F9] px-6 py-8 w-full rounded-md"
+          initial={{x:100}}
+          animate={{x: [100, 0]}}
+        >
           <h2 className="text-[#090A0B] text-[24px]">Welcome to Cryptooly</h2>
           <p className="text-base text-[#636A7E]">
             The decentralized web awaits
@@ -48,7 +57,7 @@ const CryptoolyLogin = () => {
           <button className="p-4 w-full rounded-md text-[#000000] font-bold">
             Import Using Account Seedphrase
           </button>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

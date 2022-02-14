@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import { styled } from '@mui/system';
 import SwitchUnstyled, { switchUnstyledClasses } from '@mui/base/SwitchUnstyled';
+import {motion} from 'framer-motion'
 
 const blue = {
   500: '#007FFF',
@@ -82,7 +83,14 @@ const Setting = () => {
   const [showTooltips, setShowTooltips] = useState({tipOne: false, tipTwo: false, tipThree: false, tipFour: false})
 
   return (
-    <div className="w-11/12 p-6 border-[1px] absolute top-[47px] right-0 z-10 bg-[#F8F8F9] bg-opacity-90 rounded-md">
+    <motion.div 
+      className="w-11/12 p-6 border-[1px] absolute top-[47px] right-0 z-10 bg-[#F8F8F9] bg-opacity-90 rounded-md"
+      key="settingModal"
+      initial={{opacity: 0}}
+      animate={{opacity: [0, 1]}}
+      exit={{opacity: 0}}
+      transition={{ duration: 0.4 }}
+    >
       <h3 className="font-semibold">Transaction Setting</h3>
       <div className="flex items-center gap-14 mt-4 relative">
         <p className="text-[#676A75] text-[14px]">Slippage tolerance</p>
@@ -146,7 +154,7 @@ const Setting = () => {
           Restricts swaps to direct pairs only.
         </p>}
       </div>
-    </div>
+    </motion.div>
   )
 }
 

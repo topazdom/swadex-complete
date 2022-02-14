@@ -7,6 +7,7 @@ import exchangeIcon from "../assets/images/exchange-icon.svg";
 import AutorenewOutlinedIcon from "@mui/icons-material/AutorenewOutlined";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import Setting from "./Setting";
+import {AnimatePresence, motion} from 'framer-motion'
 
 function Swap({ setShowSelectToken }) {
   const [showSetting, setShowSetting] = useState(false);
@@ -20,7 +21,12 @@ function Swap({ setShowSelectToken }) {
 
   return (
     <div className="flex-1 flex justify-center items-center">
-      <div style={{marginTop: swapFrom && "1em"}} className="w-11/12 max-w-[486px] bg-[#F8F8F9] mx-auto p-6 relative">
+      <motion.div 
+        style={{marginTop: swapFrom && "1em"}} 
+        className="w-11/12 max-w-[486px] bg-[#F8F8F9] mx-auto p-6 relative"
+        initial={{y: 100}}
+        animate={{y: [100, 0]}}
+      >
         <div className="relative flex items-center justify-between">
           <h3>Swap</h3>
           <img
@@ -29,7 +35,9 @@ function Swap({ setShowSelectToken }) {
             className="cursor-pointer"
             onClick={() => setShowSetting(!showSetting)}
           />
-          {showSetting && <Setting />}
+          <AnimatePresence>
+            {showSetting && <Setting />}
+          </AnimatePresence>
         </div>
         <div className="p-4 bg-white rounded-md mt-4">
           <div className="flex items-center justify-between">
@@ -141,7 +149,7 @@ function Swap({ setShowSelectToken }) {
             <h5 className="text-center font-semibold text-[#090A0B] mt-4 text-sm">View Pair Analytics</h5>
           </div>
         }
-      </div>
+      </motion.div>
     </div>
   );
 }

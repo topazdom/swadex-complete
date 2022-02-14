@@ -2,6 +2,7 @@ import React, {useState, Fragment} from "react";
 import closeIcon from "../../assets/images/close.svg";
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import TokenList from "./ModalElements/TokenList";
+import {motion} from "framer-motion";
 
 const ManageList = ({setShowImportToken, setShowManageList}) => {
   const [showLists, setShowLists] = useState(true);
@@ -13,7 +14,13 @@ const ManageList = ({setShowImportToken, setShowManageList}) => {
 
   return (
     <div className="w-screen h-screen absolute inset-0 bg-[#50505099] flex items-center justify-center">
-      <div className="py-6 px-4 bg-[#D9D9DA] w-11/12 max-w-[364px] rounded-md md:h-[546px] relative">
+      <motion.div 
+        className="py-6 px-4 bg-[#D9D9DA] w-11/12 max-w-[364px] rounded-md md:h-[546px] relative"
+        key="ManageListModal"
+        initial={{y: 90}}
+        animate={{y: [90, 0]}}
+        transition={{duration: 0.4}}
+      >
         <div className="flex items-center justify-between mb-3">
           <h3 className="text-md text-[#090A0B] font-semibold flex items-center gap-2">
             <ArrowBackOutlinedIcon fontSize="small" className="cursor-pointer" onClick={()=>{setShowImportToken(true); setShowManageList(false)}} />
@@ -38,7 +45,7 @@ const ManageList = ({setShowImportToken, setShowManageList}) => {
               <p className="bg-white p-2 rounded-md text-[12px] absolute bottom-6 text-center w-11/12 mx-auto font-medium">Tip: Custom tokens are stored locally in your browser</p>
             </Fragment>
         }
-      </div>
+      </motion.div>
     </div>
   );
 };

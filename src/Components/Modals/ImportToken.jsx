@@ -3,11 +3,18 @@ import euthereumIcon from "../../assets/images/euthereum.svg";
 import closeIcon from "../../assets/images/close.svg";
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import ReportProblemOutlinedIcon from "@mui/icons-material/ReportProblemOutlined";
+import {motion} from "framer-motion";
 
 const ImportToken = ({setShowSelectToken, setShowImportToken, setShowManageList}) => {
   return (
     <div className="w-screen h-screen absolute inset-0 bg-[#50505099] flex items-center justify-center">
-      <div className="py-6 px-4 bg-[#D9D9DA] w-11/12 max-w-[364px] rounded-md">
+      <motion.div 
+        className="py-6 px-4 bg-[#D9D9DA] w-11/12 max-w-[364px] rounded-md"
+        key="importTokenModal"
+        initial={{y: 90}}
+        animate={{y: [90, 0]}}
+        transition={{duration: 0.4}}
+      >
         <div className="flex items-center justify-between mb-3">
           <h3 className="text-md text-[#090A0B] font-semibold flex items-center gap-2">
             <ArrowBackOutlinedIcon fontSize="small" className="cursor-pointer" onClick={()=>{setShowImportToken(false); setShowSelectToken(true)}} />
@@ -52,7 +59,7 @@ const ImportToken = ({setShowSelectToken, setShowImportToken, setShowManageList}
             Import
           </button>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

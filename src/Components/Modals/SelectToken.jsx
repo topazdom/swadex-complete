@@ -2,11 +2,18 @@ import React from "react";
 import euthereumIcon from "../../assets/images/euthereum.svg";
 import closeIcon from "../../assets/images/close.svg";
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import {motion} from "framer-motion";
 
 const SelectToken = ({setShowSelectToken, setShowImportToken}) => {
   return (
     <div className="w-screen h-screen absolute inset-0 bg-[#50505099] flex items-center justify-center">
-      <div className="py-6 px-4 bg-[#D9D9DA] w-11/12 max-w-[364px] rounded-md">
+      <motion.div 
+        className="py-6 px-4 bg-[#D9D9DA] w-11/12 max-w-[364px] rounded-md"
+        key="SelectTokenModal"
+        initial={{y: 90}}
+        animate={{y: [90, 0]}}
+        transition={{duration: 0.4}}
+      >
         <div className="flex items-center justify-between mb-3">
           <h3 className="text-md text-[#090A0B] font-semibold">Select a token</h3>
           <img src={closeIcon} alt="" className="cursor-pointer" onClick={()=> setShowSelectToken(false)} />
@@ -68,7 +75,7 @@ const SelectToken = ({setShowSelectToken, setShowImportToken}) => {
             Manage
           </button>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
